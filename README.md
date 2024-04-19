@@ -1,6 +1,6 @@
 ### This is a small practice of building a webpage. Here are some features:
 
-(Ver 1.1)
+(Ver1.1)
   1. Added a sign-up page
      - username, email address, password
      - will direct the user to the main page after a 5-sec countdown
