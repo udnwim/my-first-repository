@@ -113,7 +113,7 @@ h1 {
     vertical-align: middle;
 }
 
-.user span {
+.user .username {
     margin-left: 2px;
     font: 12px Arial;
     line-height: 42px;
@@ -473,3 +473,9 @@ h1 {
     font-size: 25px;
     color: gray;
 }
+
+.mingcute--user-4-fill {
+    font-size: 30px;
+    color: grey;
+}
+

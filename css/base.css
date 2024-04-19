@@ -12,6 +12,10 @@ a {
     text-decoration: none;
 }
 
+input {
+    outline: none;
+}
+
 .clearfix::before,
 .clearfix::after {
     content: '';
@@ -23,3 +27,4 @@ a {
     /* move an element below floating elements */
     /* there are also clear: left/right */
 }
+

@@ -1,0 +1,146 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 20px 40px;
+  background-color: #fff;
+  width: 70%;
+  height: 600px;
+}
+
+.skip-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 30px;
+}
+
+.skip-login a {
+  color: black;
+  text-decoration: none;
+}
+
+.skip-login a:hover {
+  text-decoration: underline;
+  color: grey;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 20px;
+  margin: 80px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.login-box>.nav-bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-box .highlight {
+  display: block;
+  margin-top: -7px;
+  width: 125px;
+  height: 2px;
+  background-color: #69a6f7;
+  transition: .3s;
+}
+
+.login-box>.nav-bar>.divide {
+  height: 15px;
+  border: 1px solid lightgray;
+}
+
+.login-box>.nav-bar h4 {
+  display: block;
+  width: 129px;
+  height: 15px;
+  line-height: 15px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+}
+
+.login-box>.nav-bar h4:hover {
+  color: grey;
+}
+
+.text-login {
+  display: flex;
+  justify-content: right;
+  align-items: flex-end;
+  margin-right: 10px;
+  height: 20px;
+}
+
+.text-login span {
+  display: block;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.text-login span:hover {
+  text-decoration: underline;
+}
+
+.account-input {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* .account-input .username,
+.account-input .pwd */
+.account-input>input
+{ 
+  margin-bottom: 10px;
+  padding: 0 5px;
+  height: 35px;
+  width: 240px;
+  outline: none;
+}
+
+.account-input .warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(12px, -15px);
+  font-size: 12px;
+  color: red;
+}
+
+.help {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+.help a {
+  text-decoration: none;
+  font-size: 12px;
+  color: black;
+}
+
+.help a:hover {
+  text-decoration: underline;
+}
+
+.input-error {
+  color: red;
+  /* border-color: red; */
+}

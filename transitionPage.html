@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/transition.css">
+  <link rel="stylesheet" href="./css/base.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="countdown">
+      <p>Welcome! Your account has been successfully created.</p>
+      <a href="./index.html">Going to main page in 5 seconds...</a>
+    </div>
+  </div>
+
+  <script>
+    const direct = document.querySelector('.countdown a')
+    let s = 5
+    const timerID = setInterval(function () {
+      s--
+      direct.innerHTML = `Going to main page in ${s} seconds...`
+      if (s === 0) {
+        location.href = 'index.html'
+      }
+
+    }, 1000)
+
+  </script>
+</body>
+
+</html>

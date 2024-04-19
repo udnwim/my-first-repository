@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome!</title>
+  <link rel="stylesheet" href="./css/signup.css">
+  <link rel="stylesheet" href="./css/iconfont.css">
+  <link rel="stylesheet" href="./css/base.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h3>Company Logo</h3>
+    <!-- click on it and will go back to login page -->
+    <form action="" class="sign-up-form">
+      <div class="username">
+        <span class="uil--user icon"></span>
+        <input type="text" name="username" placeholder="Username" autocomplete="off">
+        <span class="warn"></span>
+      </div>
+      <div class="email">
+        <span class="ic--outline-email icon"></span>
+        <input type="text" name="email" placeholder="Email address (optional)" autocomplete="off">
+        <span class="warn"></span>
+      </div>
+      <div class="verification-code">
+        <span class="carbon--security icon"></span>
+        <input type="text" name="verification-code" placeholder="Verification code" autocomplete="off">
+        <a href="javascript:">Send</a>
+        <span class="warn"></span>
+        <p></p>
+      </div>
+      <div class="pwd">
+        <span class="gg--lock icon"></span>
+        <input type="password" name="pwd" placeholder="Password" autocomplete="off">
+        <span class="warn"></span>
+      </div>
+      <div class="pwd-confirm">
+        <span class="gg--lock icon"></span>
+        <input type="password" name="pwd-confirm" placeholder="Re-enter password" autocomplete="off">
+        <span class="warn"></span>
+      </div>
+      <div class="remember">
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Remember me when next time logging in</label>
+      </div>
+      <input type="submit" value="Join"></input>
+    </form>
+  </div>
+
+  <script>
+    //verify if it is a legal username
+    const username = document.querySelector('.sign-up-form [name=username]')
+    function verifyUsername() {
+      const name_rule = /^\w{6,10}$/
+      const name_warn = username.nextElementSibling
+      // console.log(name_warn)
+      if (username.value === '') {
+        name_warn.innerHTML = 'Username cannot be empty'
+        return false
+      }
+      if (!name_rule.test(username.value)) {
+        name_warn.innerHTML = 'Username has to be 6-10 letters and numbers'
+        return false
+      }
+      name_warn.innerHTML = ''
+      return true
+    }
+    username.addEventListener('change', verifyUsername)
+
+    //verify if it is a legal email
+    const email = document.querySelector('.sign-up-form [name=email]')
+    function verifyEmail() {
+      const email_rule = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+      const email_warn = email.nextElementSibling
+      if (email.value === '') {
+        email_warn.innerHTML = 'Email address cannot be empty'
+        return false
+      }
+      if (!email_rule.test(email.value)) {
+        email_warn.innerHTML = 'Invalid email'
+        return false
+      }
+      email_warn.innerHTML = ''
+      return true
+    }
+    email.addEventListener('change', verifyEmail)
+
+    //verify if it is a legal verification code
+    const vCode = document.querySelector('.sign-up-form [name=verification-code]')
+    function verifyVcode() {
+      tip.innerHTML = ''
+      const vCode_rule = /^[0-9]{6}$/
+      const vCode_warn = vCode.nextElementSibling.nextElementSibling
+      if (vCode.value === '') {
+        vCode_warn.innerHTML = 'This field cannot be empty'
+        return false
+      }
+      if (!vCode_rule.test(vCode.value)) {
+        vCode_warn.innerHTML = 'Invalid verification code'
+        return false
+      }
+      vCode_warn.innerHTML = '<span class="lets-icons--check-fill"></span>'
+      return true
+    }
+    vCode.addEventListener('change', verifyVcode)
+
+    //Send verification code (cd 30 secs)
+    const resend = document.querySelector('.sign-up-form a')
+    const tip = document.querySelector('.verification-code p')
+    const vCode_warn = document.querySelector('.verification-code .warn')
+    let flag = true
+    resend.addEventListener('click', function () {
+      if (verifyEmail()) {
+        if (vCode_warn.innerHTML === '') {
+          tip.innerHTML = 'Demonstration purpose only, enter any 6 digit'
+        }
+        if (flag) {
+          flag = false
+          let sec = 30
+          resend.innerHTML = `Resend (${sec})`
+          const timerID = setInterval(function () {
+            sec--
+            resend.innerHTML = `Resend (${sec})`
+            if (sec === 0) {
+              clearInterval(timerID)
+              resend.innerHTML = `Send`
+              flag = true
+            }
+          }, 1000)
+        }
+      }
+    })
+
+    //verify if it is a legal password
+    const pwd = document.querySelector('.sign-up-form [name=pwd]')
+    function verifyPwd() {
+      const pwd_rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d_.,!@#$%^&*()-+=<>?/\\[\]{}|~]{8,}$/
+      //At least one letter (uppercase or lowercase), one digit, Minimum length of 8 characters.    
+      const pwd_warn = pwd.nextElementSibling
+      if (pwd.value === '') {
+        pwd_warn.innerHTML = 'This field cannot be empty'
+        return false
+      }
+      if (!pwd_rule.test(pwd.value)) {
+        pwd_warn.innerHTML = 'Make sure it includes at least 1 letter, 1 digit, 8 characters long'
+        return false
+      }
+      pwd_warn.innerHTML = ''
+      return true
+    }
+    pwd.addEventListener('change', verifyPwd)
+
+    //verify if two passwords match
+    const pwd2 = document.querySelector('.sign-up-form [name=pwd-confirm]')
+    function verifyPwd2() {
+      const pwd2_warn = pwd2.nextElementSibling
+      if (pwd2.value === '') {
+        pwd2_warn.innerHTML = 'This field cannot be empty'
+        return false
+      }
+      if (pwd2.value !== pwd.value) {
+        pwd2_warn.innerHTML = 'Make sure both passwords match'
+        return false
+      }
+      pwd2_warn.innerHTML = ''
+      return true
+    }
+    pwd2.addEventListener('change', verifyPwd2)
+
+    // remember.addEventListener('click', function() {
+    //   console.log(remember.checked)
+    // })
+
+    //Before submission: check if there is any unfilled blanks; 
+    //and store user info into localstorage
+    const remember = document.querySelector('.sign-up-form [name=remember]')
+    const form = document.querySelector('.sign-up-form')
+    form.addEventListener('submit', function (e) {
+      //get all the data from the form and store to local
+      //save username and password for next time login(if checkbox is checked)
+      //To do: store multiple accounts in local
+      e.preventDefault()
+      if (verifyUsername() && verifyPwd() && verifyPwd2()) {
+        const user = {
+          username: `${username.value}`,
+          email: `${email.value}`,
+          pwd: `${pwd.value}`,
+          remember: `${remember.checked}`
+        }
+        console.log(user)
+        localStorage.setItem(`user`, JSON.stringify(user))
+      } else {
+        e.preventDefault()
+      }
+      window.location.href = "transitionPage.html"
+    })
+
+  </script>
+</body>
+
+</html>

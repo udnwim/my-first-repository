@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <h3>Company Logo</h3>
+    <div class="skip-login"><a href="./index.html">SKIP LOGIN >></a></div>
+    <div class="login-box">
+      <div class="nav-bar">
+        <div class="pwd-login">
+          <h4>SIGN IN</h4>
+        </div>
+        <div class="divide"></div>
+        <div class="qrCode-login">
+          <h4>SCAN CODE</h4>
+          <!-- work zone -->
+        </div>
+      </div>
+      <div class="highlight"></div>
+      <div class="text-login"><span>Verification Code Login</span></div>
+      <form class="account-input">
+        <span class="warning"></span>
+        <input type="text" class="username" placeholder="Enter your username">
+        <input type="password" class="pwd" placeholder="Enter your password">
+        <!-- checkbox: remember me -->
+        <input type="submit" class="login-btn" value="Log in">
+      </form>
+      <div class="help">
+        <a href="javascript:" class="find-pwd">Forgot password?</a>
+        <a href="./signup.html" class="signup" target="_blank">Sign up</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const navBar = document.querySelector('.login-box .nav-bar')
+    const highlight = document.querySelector('.login-box .highlight')
+    //the movement of the blue bar after clicking either tab
+    navBar.addEventListener('click', function (e) {
+      if (e.target.tagName === 'H4') {
+        const n = e.target.offsetLeft
+        const m = this.offsetLeft
+        const moving_distance = n - m
+        highlight.style.transform = `translateX(${moving_distance + 'px'})`
+      }
+    })
+
+    const username = document.querySelector('.account-input .username')
+    const warning = document.querySelector('.account-input .warning')
+    const rule_username = /^\w{6,10}$/
+
+    //To do: checkbox - remember me / account
+
+    const login = document.querySelector('.account-input')
+    const input = login.children
+    // console.log(input);
+    login.addEventListener('submit', function (e) {
+      e.preventDefault()
+      for (let i = 0; i < input.length; i++) {
+        console.log(11);
+        if (input[i] === '') {
+          alert('Please enter username and password')
+          return false
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>
