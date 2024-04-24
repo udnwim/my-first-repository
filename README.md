@@ -3,6 +3,7 @@
 (Ver1.1)
   1. Added a sign-up page
      - username, email address, password
+     - verify the legality of the information above
      - will direct the user to the main page after a 5-sec countdown
   3. Added a login page (in progress)
      - interface only
