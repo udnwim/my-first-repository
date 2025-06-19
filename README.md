@@ -1,5 +1,5 @@
 ### This is a small practice of building a webpage. 
-[Check out the page here]([https://pages.github.com/](https://udnwim.github.io/my-first-repository/))
+[Check out the page here](https://udnwim.github.io/my-first-repository/)
 
 (Ver1.1)
   1. Added a sign-up page
