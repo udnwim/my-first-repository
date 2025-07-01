@@ -192,10 +192,10 @@
         }
         console.log(user)
         localStorage.setItem(`user`, JSON.stringify(user))
+        window.location.href = "transitionPage.html"
       } else {
         e.preventDefault()
       }
-      window.location.href = "transitionPage.html"
     })
 
   </script>
